@@ -1,0 +1,113 @@
+Internal Server Error
+
+Copy as Markdown
+Illuminate\Database\QueryException
+vendor\laravel\framework\src\Illuminate\Database\Connection.php:838
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'username' in 'where clause' (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: project-pkk, SQL: select * from `users` where `username` is null limit 1)
+
+LARAVEL
+12.56.0
+PHP
+8.2.30
+UNHANDLED
+CODE 42S22
+500
+POST
+http://127.0.0.1:8000/login
+
+Exception trace
+16 vendor frames
+
+Illuminate\Support\Facades\Facade::__callStatic(string, array)
+app\Http\Requests\Auth\LoginRequest.php:56
+
+51        $field = 'nis';
+52    } else {
+53        $field = 'username';
+54    }
+55
+56    if (! Auth::attempt([
+57        $field => $login,
+58        'password' => $this->password
+59    ], $this->boolean('remember'))) {
+60
+61        RateLimiter::hit($this->throttleKey());
+62
+63        throw ValidationException::withMessages([
+64            'login' => trans('auth.failed'),
+65        ]);
+66    }
+67
+68
+App\Http\Requests\Auth\LoginRequest->authenticate()
+app\Http\Controllers\Auth\AuthenticatedSessionController.php:27
+
+49 vendor frames
+
+Illuminate\Foundation\Application->handleRequest(object(Illuminate\Http\Request))
+public\index.php:20
+
+1 vendor frame
+
+Queries
+1-1 of 1
+mysql
+select * from `cache` where `key` in ('laravel-cache-admin1|127.0.0.1')
+18.41ms
+Headers
+host
+127.0.0.1:8000
+connection
+keep-alive
+content-length
+97
+cache-control
+max-age=0
+sec-ch-ua
+"Chromium";v="146", "Not-A.Brand";v="24", "Microsoft Edge";v="146"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+origin
+http://127.0.0.1:8000
+content-type
+application/x-www-form-urlencoded
+upgrade-insecure-requests
+1
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0
+accept
+text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+sec-fetch-site
+same-origin
+sec-fetch-mode
+navigate
+sec-fetch-user
+?1
+sec-fetch-dest
+document
+referer
+http://127.0.0.1:8000/login
+accept-encoding
+gzip, deflate, br, zstd
+accept-language
+en-US,en;q=0.9
+cookie
+XSRF-TOKEN=eyJpdiI6IjFKdlk5L1k2RFQwaFRGS1RmRFdHMFE9PSIsInZhbHVlIjoiQlZ4U0gxMy9ydEhmU0VNdjR3Rmc2bmpOSHJFMW50bTdBRnNKSG5rT0t3eDRBeG1TTTR3QVJSbWNhSkgrTUxmSTJPVHB2UnhJSUcwRCtpeGlwaEJ0N1NpSlBMRFBxY3F1UTRqbERGTzhzSkhjbXlPcnpOVG9oLzBZYzRSTEV4Q1giLCJtYWMiOiIyNjgwMmFkNDYzY2E0MTZkNDEzZGMwM2MzNTY0MTJhOTQwNjMwMDA5N2YzNTRjYTk3OTdkNTgzMTkwYTg4MzYwIiwidGFnIjoiIn0%3D; laravel-session=eyJpdiI6ImY0QitTOUtKTDdqUmgyazRESk9Yc2c9PSIsInZhbHVlIjoiYjhwZ1hkYlNjQzNWekdKZ2VXOVNxZmFqRE1nV1BHR0oxL2wyekUwalRFSUpxMDNMakVuQkxyeFBZTm5tZGRSWXFEZDZYMk0xNVdkNldhRmVpSlBnRTR5Wnd6RFVzejdMakZSNjV4MG1HZHBpcWlGVWxJeWVURnFRditEdGdvbUgiLCJtYWMiOiIxMjM1ODQxMjgyMmU0ODllN2QxMTRjYWFjYjhhYjc5ZDRmNDRlNzhmMjZiMGVjY2VjMTg5Yzk0ZGIyZTQyY2E4IiwidGFnIjoiIn0%3D
+Body
+{
+    "_token": "p6WRX2PaDRnYJWVaRa90aPRkmle1lXn13H3TEAaO",
+    "role_selector": "admin",
+    "nis": "admin1",
+    "password": "123456789"
+}
+Routing
+controller
+App\Http\Controllers\Auth\AuthenticatedSessionController@store
+route name
+generated::Dn6ZHa5VAlekaAKo
+middleware
+web, guest
+Routing parameters
+// No routing parameters
